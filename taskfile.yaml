@@ -1,0 +1,37 @@
+version: "3"
+
+tasks:
+  dev:
+    desc: start all apps in dev the mode
+    deps:
+      - task: dev:web
+
+  dev:web:
+    desc: start web localhost
+    cmds:
+      - pnpm dev
+
+  fmt:
+    desc: format all packages
+    deps:
+      - task: fmt:web
+
+  fmt:web:
+    desc: format web files
+    cmds:
+      - pnpm fmt
+
+  build:
+    desc: build packages then apps
+    cmds:
+      - pnpm build
+
+  lint:
+    desc: lint all the packages
+    cmds:
+      - pnpm lint
+
+  install:
+    desc: install all the dependencies
+    cmds:
+      - pnpm install

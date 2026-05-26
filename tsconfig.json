@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+
+    // some extra strict mode
+    // "sourceMap": true, // debugging support
+    // "forceConsistentCasingInFileNames": true,
+    // "noEmitOnError": true, // prevents broken builds — excellent for CI/CD
+    // "noUncheckedIndexedAccess": true, // →  helps prevent undefined bugs
+    // "noImplicitOverride": true, // → great for class safety
+    // "noFallthroughCasesInSwitch": true, //  avoids logic bugs
+    // "noUncheckedSideEffectImports": true, // checks if the files exits or not
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "allowUnusedLabels": false,
+    // "allowUnreachableCode": false,
+    // "erasableSyntaxOnly": true,
+    // "noErrorTruncation": false, // use true for debug purpose -> shows full error if true
+    // "exactOptionalPropertyTypes": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts",
+    "src/index.js",
+    "src/_config/env.config.ts"
+  ],
+  "exclude": ["node_modules"]
+}
