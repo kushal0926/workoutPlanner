@@ -1,4 +1,4 @@
-import Navbar from "@/_components/layout/navbar";
+import Navbar from "@/components/layout/navbar";
 import Link from "next/link";
 
 export default function NotFound() {

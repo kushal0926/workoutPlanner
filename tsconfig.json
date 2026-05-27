@@ -46,7 +46,7 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts",
     "src/index.js",
-    "src/_config/env.config.ts"
+    "src/config/env.config.ts"
   ],
   "exclude": ["node_modules"]
 }
