@@ -11,7 +11,7 @@ export default function Navbar() {
           alt="logo"
           className="bg-transparent"
         />
-        <span className="text-5xl font-bold">workoutPlanner</span>
+        <span className="sm:text5xl text-4xl font-bold">workoutPlanner</span>
       </div>
     </nav>
   );
