@@ -10,7 +10,7 @@ import {
 } from "drizzle-orm/pg-core";
 
 export const userProfile = pgTable("user_profiles", {
-  user_id: uuid("user_id").primaryKey(),
+  id: uuid("id").primaryKey().defaultRandom(),
   goal: varchar("goal", { length: 20 }).notNull(),
   experience: varchar("experience", { length: 20 }).notNull(),
   days_per_week: integer("days_per_week").notNull(),
@@ -27,7 +27,9 @@ export const trainingPlans = pgTable(
   "training_plans",
   {
     id: uuid("id").primaryKey().defaultRandom(),
-    user_id: uuid("user_id").notNull(),
+    profile_id: uuid("profile_id  ")
+      .notNull()
+      .references(() => userProfile.id, { onDelete: "cascade" }),
     plan_json: json("plan_json").notNull(),
     plan_text: text("plan_text").notNull(),
     version: integer("version").notNull().default(1),
@@ -35,12 +37,11 @@ export const trainingPlans = pgTable(
       .notNull()
       .defaultNow(),
   },
-  (table) => [
-    index("idx_training_plans_user_id").on(table.user_id),
-  ]
+  (table) => [index("idx_training_plans_profile_id").on(table.profile_id)],
 );
 
 // types you can use in your controllers
 export type UserProfile = typeof userProfile.$inferSelect;
+export type NewUserProfile = typeof userProfile.$inferInsert;
 export type TrainingPlan = typeof trainingPlans.$inferSelect;
 export type NewTrainingPlan = typeof trainingPlans.$inferInsert;

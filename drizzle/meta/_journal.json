@@ -15,6 +15,20 @@
       "when": 1779897636055,
       "tag": "0001_loose_prism",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1779954118498,
+      "tag": "0002_common_scarecrow",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1779954198164,
+      "tag": "0003_stormy_tinkerer",
+      "breakpoints": true
     }
   ]
 }

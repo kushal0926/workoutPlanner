@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className="relative pt-20 pb-20 px-6 overflow-hidden">
+    <section className="relative pt-10 pb-20 px-6 overflow-hidden">
       <div className="relative max-w-6xl mx-auto text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-8">
           <Zap className="w-4 h-4" />

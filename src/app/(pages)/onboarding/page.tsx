@@ -4,9 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { UserProfile } from "@/types";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { useState } from "react";
+import { UserProfileForm } from "@/types";
+import { useApp } from "@/context/AppContext";
+import { useRouter } from "next/navigation";
 
 type Options = {
   value: string;
@@ -56,6 +58,8 @@ const splitOptions: Options[] = [
 ];
 
 export default function Onboarding() {
+  const { saveProfile, generatePlan } = useApp();
+  const router = useRouter();
   const [formData, setFormData] = useState({
     goal: "strength",
     experience: "beginner",
@@ -66,9 +70,7 @@ export default function Onboarding() {
     preferredSplit: "upper_lower",
   });
   const [isGenerating, setIsGenerating] = useState(false);
-  //   const navigate = useNavigate();
 
-  // updating the form data
   function updateForm(field: string, value: string) {
     setFormData((prev) => ({ ...prev, [field]: value }));
   }
@@ -76,31 +78,30 @@ export default function Onboarding() {
   async function handleQuestions(e: React.SubmitEvent) {
     e.preventDefault();
 
-    const profile: Omit<UserProfile, "userId" | "updatedAt"> = {
-      goal: formData.goal as UserProfile["goal"],
-      experience: formData.experience as UserProfile["experience"],
+    const profile: UserProfileForm = {
+      goal: formData.goal as UserProfileForm["goal"],
+      experience: formData.experience as UserProfileForm["experience"],
       daysPerWeek: parseInt(formData.daysPerWeek),
       sessionLength: parseInt(formData.sessionLength),
-      equipment: formData.equipment as UserProfile["equipment"],
+      equipment: formData.equipment as UserProfileForm["equipment"],
       injuries: formData.injuries || undefined,
-      preferredSplit: formData.preferredSplit as UserProfile["preferredSplit"],
+      preferredSplit:
+        formData.preferredSplit as UserProfileForm["preferredSplit"],
     };
-    console.log(profile);
 
     try {
-      //   await saveProfile(profile);
       setIsGenerating(true);
-      //   await generatePlan();
-      //   navigate("/profile");
+      await saveProfile(profile);
+      await generatePlan();
+      router.push("/plan");
     } catch (error) {
-      if (error instanceof Error) {
-        console.error("failed to save profile", error.message);
-      }
-    } finally {
-      setIsGenerating(false);
+      console.error(
+        "Failed to save profile:",
+        error instanceof Error ? error.message : error,
+      );
+      setIsGenerating(false); // only reset on error, success navigates away
     }
   }
-
   return (
     <div>
       <div className="min-h-screen pb-10 px-7">
@@ -186,9 +187,9 @@ export default function Onboarding() {
             </Card>
           ) : (
             <Card variant="bordered" className="text-center py-10">
-              <Loader2 className="w-12 h-12 text-accent mx-auto mb-6 animate-spin" />
-              <h1 className="text-2xl font-bold mb-2">creating your plan</h1>
-              <p className="text-muted">
+              <Loader2 className="w-12 h-12 text-background mx-auto mb-6 animate-spin" />
+              <h1 className="text-2xl font-bold mb-2 text-background">creating your plan</h1>
+              <p className="text-background">
                 {" "}
                 building your personalized training program...
               </p>
