@@ -50,7 +50,7 @@ export async function generateTrainingPlan(
     apiKey,
     baseURL: "https://openrouter.ai/api/v1",
     defaultHeaders: {
-      "HTTP-Referer": BASE_URL || "http://localhost:5001",
+      "HTTP-Referer": BASE_URL ?? "http://localhost:5001",
       "X-Title": "workout plan generator",
     },
   });

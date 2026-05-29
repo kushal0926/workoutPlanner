@@ -10,7 +10,7 @@ const envSchema = z.object({
   NODE_ENV: z.enum(["development", "production"]).default("development"),
   PORT: z.string().default("5173"),
   DATABASE_URL: z.string().startsWith("postgresql://"),
-  BASE_URL: z.string(),
+  BASE_URL: z.string().optional(),
   OPENROUTER_KEY: z.string().startsWith("sk-or"),
 });
 
