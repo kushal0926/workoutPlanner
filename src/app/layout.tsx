@@ -3,7 +3,7 @@ import "./globals.css";
 import { AppProvider } from "@/context/AppProvider";
 
 export const metadata: Metadata = {
-  title: "Pulse Plan",
+  title: "Workout Planner",
   description: "Create you workout plan through AI",
 };
 

@@ -188,7 +188,9 @@ export default function Onboarding() {
           ) : (
             <Card variant="bordered" className="text-center py-10">
               <Loader2 className="w-12 h-12 text-background mx-auto mb-6 animate-spin" />
-              <h1 className="text-2xl font-bold mb-2 text-background">creating your plan</h1>
+              <h1 className="text-2xl font-bold mb-2 text-background">
+                creating your plan
+              </h1>
               <p className="text-background">
                 {" "}
                 building your personalized training program...

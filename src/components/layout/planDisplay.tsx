@@ -60,8 +60,12 @@ function DayCard({ schedule }: { schedule: DaySchedule }) {
     <Card variant="bordered" className="overflow-hidden">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="font-semibold text-xl text-background">{schedule.day}</h3>
-          <p className="text-xl text-background font-medium">{schedule.focus}</p>
+          <h3 className="font-semibold text-xl text-background">
+            {schedule.day}
+          </h3>
+          <p className="text-xl text-background font-medium">
+            {schedule.focus}
+          </p>
         </div>
         <div className="flex items-center gap-2 text-xl text-background">
           <Dumbbell className="w-5 h-5" />
