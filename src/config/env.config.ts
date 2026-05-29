@@ -23,5 +23,4 @@ if (!parsed.success) {
   process.exit(1);
 }
 
-export const { NODE_ENV, PORT, DATABASE_URL, OPENROUTER_KEY } =
-  parsed.data;
+export const { NODE_ENV, PORT, DATABASE_URL, OPENROUTER_KEY } = parsed.data;
