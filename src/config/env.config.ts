@@ -10,7 +10,6 @@ const envSchema = z.object({
   NODE_ENV: z.enum(["development", "production"]).default("development"),
   PORT: z.string().default("5173"),
   DATABASE_URL: z.string().startsWith("postgresql://"),
-  BASE_URL: z.string().optional(),
   OPENROUTER_KEY: z.string().startsWith("sk-or"),
 });
 
@@ -24,5 +23,5 @@ if (!parsed.success) {
   process.exit(1);
 }
 
-export const { NODE_ENV, PORT, DATABASE_URL, BASE_URL, OPENROUTER_KEY } =
+export const { NODE_ENV, PORT, DATABASE_URL, OPENROUTER_KEY } =
   parsed.data;
